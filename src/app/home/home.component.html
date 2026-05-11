@@ -1,0 +1,66 @@
+<div class="login-container">
+
+  <div class="parchment-overlay"></div>
+
+  <div class="login-card" role="region" aria-label="Login card">
+
+    <div class="logo-frame">
+      <img src="assets/logo/logo.svg" alt="Logo" class="logo">
+    </div>
+
+    <h1>Gondor Chic</h1>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-frame">
+
+      <div class="input-group">
+        <label for="pseudo">Pseudo</label>
+        <input id="pseudo" type="text"
+               formControlName="pseudo"
+               placeholder="Entrez votre pseudo">
+
+        <div class="error"
+             *ngIf="loginForm.get('pseudo')?.touched &&
+              loginForm.get('pseudo')?.invalid">
+
+          <small *ngIf="loginForm.get('pseudo')?.errors?.['required']">
+            Pseudo obligatoire
+          </small>
+
+        </div>
+      </div>
+
+
+      <div class="input-group">
+        <label for="motDePasse">Mot de passe</label>
+        <input id="motDePasse"
+               type="password"
+               formControlName="motDePasse"
+               placeholder="Entrez votre mot de passe">
+
+        <div class="error"
+             *ngIf="loginForm.get('motDePasse')?.touched &&
+              loginForm.get('motDePasse')?.invalid">
+
+          <small *ngIf="loginForm.get('motDePasse')?.errors?.['required']">
+            Mot de passe obligatoire
+          </small>
+
+          <small *ngIf="loginForm.get('motDePasse')?.errors?.['minlength']">
+            Minimum 8 caractères
+          </small>
+
+          <small *ngIf="loginForm.get('motDePasse')?.errors?.['pattern']">
+            Doit contenir une majuscule et un symbole
+          </small>
+
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="!loginForm.valid">
+        S'identifier
+      </button>
+
+    </form>
+
+  </div>
+</div>
