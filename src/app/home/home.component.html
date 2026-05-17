@@ -56,6 +56,10 @@
         </div>
       </div>
 
+      <div class="login-error" *ngIf="errorMessage()" style="color: #d9534f; margin-bottom: 1rem; text-align: center; font-weight: bold;">
+        {{ errorMessage() }}
+      </div>
+
       <button type="submit" [disabled]="!loginForm.valid">
         S'identifier
       </button>

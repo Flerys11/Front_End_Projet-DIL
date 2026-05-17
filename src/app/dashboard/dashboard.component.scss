@@ -1,0 +1,363 @@
+.dashboard-container {
+  min-height: 100vh;
+  position: relative;
+  
+  background-image:
+    linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+    url('/assets/fond.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+  color: #f4e8d2;
+  font-family: 'Cinzel', serif;
+  overflow-x: hidden;
+}
+
+.parchment-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2); // Soft shadow so the paper background shows clearly
+  z-index: 1;
+  pointer-events: none;
+}
+
+.dashboard-header,
+.dashboard-content {
+  position: relative;
+  z-index: 2;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 3rem;
+  background: rgba(43, 31, 21, 0.95); // Dark medieval banner
+  border-bottom: 3px double #c9a25b;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .mini-logo {
+      height: 40px;
+      filter: drop-shadow(0 0 5px #c9a25b);
+    }
+
+    h2 {
+      margin: 0;
+      color: #c9a25b;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 1.1rem;
+    color: #f4e8d2;
+
+    span {
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .logout-btn {
+      background: transparent;
+      color: #c9a25b;
+      border: 1px solid #c9a25b;
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #c9a25b;
+        color: #2b1f15;
+        box-shadow: 0 0 10px rgba(201, 162, 91, 0.5);
+      }
+    }
+  }
+}
+
+.dashboard-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .welcome-section {
+    text-align: center;
+    margin-bottom: 3.5rem;
+
+    h1 {
+      font-size: 3.2rem;
+      color: #4a3319; // Rich dark brown for readability on background
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: #3b2814;
+      font-style: italic;
+      font-weight: bold;
+      text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  .product-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .product-card {
+    background: rgba(245, 235, 215, 0.95); // Light warm parchment paper card!
+    border: 3px double #8b6b3d; // Classical double gold-brown border
+    border-radius: 12px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 780px; // Wider for horizontal layout
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    position: relative;
+    color: #2b1f15; // Dark text on parchment
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: -15px;
+      right: 20px;
+      background: #8b6b3d;
+      color: #f4e8d2;
+      padding: 0.4rem 1.2rem;
+      border-radius: 4px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      border: 1px solid #c9a25b;
+      z-index: 5;
+    }
+
+    .product-image-container {
+      margin-bottom: 0;
+      display: flex;
+      justify-content: center;
+      flex-shrink: 0;
+
+      .product-image {
+        width: 240px; // Much larger for stunning presence!
+        height: 240px;
+        object-fit: contain; // Do not cut the top/bottom of products (like the cape hood!)
+        background: #ffffff; // Seamless blend with white-background product shots
+        border-radius: 50%;
+        border: 4px double #8b6b3d; // Double golden-brown royal border
+        padding: 0.5rem; // Breathing room inside the border
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05); // Subtle zoom on hover for RPG feel
+        }
+      }
+
+      .image-placeholder {
+        width: 240px;
+        height: 240px;
+        background: #2b1f15;
+        border: 3px dashed #8b6b3d;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 6rem;
+        box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.8);
+      }
+    }
+
+    .product-details {
+      flex: 1; // Take remaining space
+      text-align: left; // Align text to the left!
+
+      h3 {
+        color: #4a3319; // Elegant ancient wood color
+        font-size: 2.1rem;
+        margin: 0 0 0.8rem 0;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-bottom: 1px double rgba(139, 107, 61, 0.3);
+        padding-bottom: 0.8rem;
+      }
+
+      .price {
+        font-size: 1.8rem;
+        color: #8b6b3d; // Classical copper-gold color
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      .stock {
+        font-size: 1.05rem;
+        color: #6e5e4f;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+
+        &.low-stock {
+          color: #b83c37;
+        }
+      }
+
+      .quantity-selector {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; // Align left
+        gap: 1rem;
+        margin-bottom: 1.8rem;
+
+        label {
+          font-size: 0.95rem;
+          color: #4a3319;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .quantity-input {
+          width: 75px;
+          padding: 0.5rem;
+          background: #fdfbf7; // Light input background
+          border: 1px solid #8b6b3d;
+          border-radius: 4px;
+          color: #2b1f15;
+          font-family: inherit;
+          font-size: 1.15rem;
+          font-weight: bold;
+          text-align: center;
+          outline: none;
+          transition: all 0.3s;
+          box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+
+          &:focus {
+            border-color: #c9a25b;
+            box-shadow: 0 0 5px rgba(201, 162, 91, 0.4);
+            background: #fff;
+          }
+
+          /* Hide spin buttons */
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+          &[type=number] {
+            -moz-appearance: textfield;
+          }
+        }
+      }
+
+      .add-to-cart-btn {
+        background: #5c3e21; // Rich dark wood button
+        color: #fdfbf7;
+        border: 1px solid #8b6b3d;
+        padding: 1.1rem 2rem;
+        font-size: 1.15rem;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: inherit;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        width: 100%;
+        max-width: 320px; // Button is clean when left-aligned
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+        &:hover {
+          background: #8b6b3d;
+          color: #fdfbf7;
+          border-color: #c9a25b;
+          box-shadow: 0 6px 15px rgba(139, 107, 61, 0.4);
+          transform: translateY(-2px);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+
+    // Responsive design to preserve usability on smaller viewports
+    @media (max-width: 720px) {
+      flex-direction: column;
+      text-align: center;
+      gap: 2rem;
+      max-width: 420px;
+      padding: 2.5rem 1.5rem;
+
+      .product-image-container {
+        margin-bottom: 0.5rem;
+      }
+
+      .product-details {
+        text-align: center;
+
+        h3 {
+          font-size: 1.8rem;
+        }
+
+        .quantity-selector {
+          justify-content: center;
+        }
+
+        .add-to-cart-btn {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+
+  .loading-section {
+    background: rgba(245, 235, 215, 0.9);
+    border: 2px dashed #8b6b3d;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #4a3319;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  }
+}
